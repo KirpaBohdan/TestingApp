@@ -1,0 +1,21 @@
+﻿@model Test
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <h1>@Model.Name</h1>
+            <h2>@Model.Description</h2>
+            <form method="post" asp-controller="Test" asp-action="StartTest">
+                <input type="hidden" value="@Model.Id" name="Id" />
+                <label><input type=checkbox id=allow> Я согласен на прохождение теста</label><br />
+                <input type="submit" id="submit" value="Начать тест" disabled>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<script>
+    document.getElementById('allow').addEventListener('change', function (e) {
+        document.getElementById('submit').disabled = !e.target.checked
+    })
+</script>

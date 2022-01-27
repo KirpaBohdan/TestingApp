@@ -1,0 +1,16 @@
+﻿@model List<Test>
+
+<h1>Здравствуйте, @User.Identity.Name</h1>
+
+<div class="col-md-3"></div>
+<div class="col-md-6">
+    <h3>Доступные тесты</h3>
+    @foreach (var test in Model)
+    {
+        <ul>
+            <li><a href="/Test/Index/@test.Id">@test.Name</a> Оценка - @test.Users_Tests.FirstOrDefault().Mark</li>
+        </ul>
+    }
+</div>
+<div class="col-md-3"></div>
+<a href="/Home/LogOut">Выйти</a>
